@@ -1,0 +1,324 @@
+<!-- portfolio.html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portfolio — Youssef Design (Roblox UI/UX)" />
+  <meta name="theme-color" content="#000000" />
+  <title>Portfolio | Youssef Design</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <div id="starfield-container"><canvas id="stars"></canvas></div>
+
+  <!-- الهيدر العايم -->
+  <div class="dock-header" role="navigation" aria-label="Main Navigation">
+    <div class="dock-shell">
+      <ul class="dock-list">
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Home" href="index.html"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn active" data-label="Portfolio" href="portfolio.html"><i class="fas fa-images"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Terms" href="terms.html"><i class="fas fa-file-contract"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Price" href="price.html"><i class="fas fa-tag"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Games" href="games.html"><i class="fas fa-gamepad"></i></a>
+        </li>
+      </ul>
+
+      <div class="lang-switcher" role="group" aria-label="Language Switcher">
+        <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button" aria-pressed="false">AR</button>
+        <button class="lang-btn" data-lang="es" type="button" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="content-page">
+    <h1 class="page-title"
+        data-en="Last My Works"
+        data-ar="أحدث أعمالي"
+        data-es="Mis últimos trabajos">
+      Last My Works
+    </h1>
+
+    <div class="page-subtitle"
+         data-en="Curated, optimized, and game-ready."
+         data-ar="مختارة، مُحسّنة، وجاهزة للعبة."
+         data-es="Seleccionados, optimizados y listos para el juego.">
+      Curated, optimized, and game-ready.
+    </div>
+
+    <!-- Grid -->
+    <section class="portfolio-grid" aria-label="Portfolio grid">
+      <!-- كل صورة ككارد -->
+      <figure class="work-card portfolio-item reveal" data-group="g1">
+        <img class="work-img" src="images/work1.jpg" alt="Work 1" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 1"
+            data-ar="العمل 1"
+            data-es="Trabajo 1">Work 1</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g1">
+        <img class="work-img" src="images/work2.jpg" alt="Work 2" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 2"
+            data-ar="العمل 2"
+            data-es="Trabajo 2">Work 2</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g1">
+        <img class="work-img" src="images/work3.jpg" alt="Work 3" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 3"
+            data-ar="العمل 3"
+            data-es="Trabajo 3">Work 3</span>
+        </figcaption>
+      </figure>
+
+      <!-- group 2 -->
+      <figure class="work-card portfolio-item reveal" data-group="g2">
+        <img class="work-img" src="images/work4.jpg" alt="Work 4" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 4"
+            data-ar="العمل 4"
+            data-es="Trabajo 4">Work 4</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g2">
+        <img class="work-img" src="images/work5.jpg" alt="Work 5" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 5"
+            data-ar="العمل 5"
+            data-es="Trabajo 5">Work 5</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g2">
+        <img class="work-img" src="images/work6.jpg" alt="Work 6" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 6"
+            data-ar="العمل 6"
+            data-es="Trabajo 6">Work 6</span>
+        </figcaption>
+      </figure>
+
+      <!-- group 3 -->
+      <figure class="work-card portfolio-item reveal" data-group="g3">
+        <img class="work-img" src="images/work7.jpg" alt="Work 7" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 7"
+            data-ar="العمل 7"
+            data-es="Trabajo 7">Work 7</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g3">
+        <img class="work-img" src="images/work8.jpg" alt="Work 8" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 8"
+            data-ar="العمل 8"
+            data-es="Trabajo 8">Work 8</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g3">
+        <img class="work-img" src="images/work9.jpg" alt="Work 9" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 9"
+            data-ar="العمل 9"
+            data-es="Trabajo 9">Work 9</span>
+        </figcaption>
+      </figure>
+
+      <!-- group 4 -->
+      <figure class="work-card portfolio-item reveal" data-group="g4">
+        <img class="work-img" src="images/work10.jpg" alt="Work 10" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 10"
+            data-ar="العمل 10"
+            data-es="Trabajo 10">Work 10</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g4">
+        <img class="work-img" src="images/work11.jpg" alt="Work 11" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 11"
+            data-ar="العمل 11"
+            data-es="Trabajo 11">Work 11</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g4">
+        <img class="work-img" src="images/work12.jpg" alt="Work 12" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 12"
+            data-ar="العمل 12"
+            data-es="Trabajo 12">Work 12</span>
+        </figcaption>
+      </figure>
+
+      <!-- group 5 -->
+      <figure class="work-card portfolio-item reveal" data-group="g5">
+        <img class="work-img" src="images/work13.jpg" alt="Work 13" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 13"
+            data-ar="العمل 13"
+            data-es="Trabajo 13">Work 13</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g5">
+        <img class="work-img" src="images/work14.jpg" alt="Work 14" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 14"
+            data-ar="العمل 14"
+            data-es="Trabajo 14">Work 14</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g5">
+        <img class="work-img" src="images/work15.jpg" alt="Work 15" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 15"
+            data-ar="العمل 15"
+            data-es="Trabajo 15">Work 15</span>
+        </figcaption>
+      </figure>
+
+      <!-- group 6 -->
+      <figure class="work-card portfolio-item reveal" data-group="g6">
+        <img class="work-img" src="images/work16.jpg" alt="Work 16" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 16"
+            data-ar="العمل 16"
+            data-es="Trabajo 16">Work 16</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g6">
+        <img class="work-img" src="images/work17.jpg" alt="Work 17" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 17"
+            data-ar="العمل 17"
+            data-es="Trabajo 17">Work 17</span>
+        </figcaption>
+      </figure>
+
+      <figure class="work-card portfolio-item reveal" data-group="g6">
+        <img class="work-img" src="images/work18.jpg" alt="Work 18" loading="lazy" />
+        <figcaption class="work-cap">
+          <i class="fa-solid fa-maximize"></i>
+          <span
+            data-en="Work 18"
+            data-ar="العمل 18"
+            data-es="Trabajo 18">Work 18</span>
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="dock-footer">
+    <div class="dock-footer-shell">
+      <div class="dock-footer-item time-block">
+        <span class="time-label"
+              data-en="Cairo Time:"
+              data-ar="وقت القاهرة:"
+              data-es="Hora de El Cairo:">
+          Cairo Time:
+        </span>
+        <span class="time-value" id="current-time">--:--:--</span>
+
+        <a class="social-btn discord-btn"
+           href="https://discord.com/users/1077620522680057856"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Discord">
+          <i class="fab fa-discord" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="dock-footer-item comm-block" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"><div class="dot"></div></div>
+        <span>
+          <strong data-en="Commissions:" data-ar="الطلبات:" data-es="Comisiones:">Commissions:</strong>
+          <span data-en="Opened" data-ar="مفتوحة" data-es="Abiertas">Opened</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مودال تكبير الصور -->
+  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <span class="close-btn" id="closeModal" role="button" tabindex="0" aria-label="Close image modal">&times;</span>
+    <div class="modal-content">
+      <h2 id="modalTitle" class="visually-hidden">Image preview</h2>
+      <p id="modalDesc" class="visually-hidden">Full size image preview.</p>
+      <img src="" alt="Full size image" id="modalImage">
+    </div>
+  </div>
+
+  <!-- overlay الانتقال -->
+  <div id="page-transition-overlay" class="page-transition-overlay" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!-- terms.html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Terms of Service for working with Youssef Design - Professional Roblox UI/UX Designer"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>Terms of Service | Youssef Design</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    .rules-lead{
+      text-align:center;
+      margin-top:12px;
+      margin-bottom:28px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background: rgba(171,185,223,.08);
+      border: 1px solid rgba(171,185,223,.3);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:600;
+      color:#dfe6ff;
+      box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 20px rgba(171,185,223,.4);
+    }
+
+    .rules-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(min(240px,100%),1fr));
+      gap:20px;
+    }
+
+    .rule-card{
+      position:relative;
+      border-radius:16px;
+      background:
+        radial-gradient(circle at -20% -10%, rgba(171,185,223,.18) 0%, rgba(16,18,28,0) 60%),
+        rgba(16,18,28,.6);
+      border:1px solid rgba(171,185,223,.28);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.8),
+        0 0 80px rgba(171,185,223,.4);
+
+      padding:16px 16px 18px;
+      min-height:160px;
+
+      opacity:0;
+      transform:translateY(20px) scale(.97);
+      transition:opacity .6s cubic-bezier(.22,.61,.36,1),
+                 transform .6s cubic-bezier(.22,.61,.36,1);
+    }
+    .rule-card.show{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .rule-icon{
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.5) 0%, rgba(171,185,223,.2) 40%, rgba(0,0,0,0) 70%),
+        rgba(171,185,223,.12);
+      border:1px solid rgba(171,185,223,.4);
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.8),
+        0 0 30px rgba(171,185,223,.6);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.9rem;
+      margin-bottom:10px;
+    }
+
+    .rule-title{
+      font-size:.95rem;
+      color:#fff;
+      font-weight:700;
+      margin:0 0 8px;
+      line-height:1.4;
+      text-shadow:0 0 8px rgba(171,185,223,.5);
+    }
+
+    .rule-desc{
+      margin:0;
+      font-size:.85rem;
+      line-height:1.5;
+      color:#cfd6ff;
+    }
+
+    .legacy-terms{
+      position:absolute;
+      left:-9999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="starfield-container"><canvas id="stars"></canvas></div>
+
+  <!-- الهيدر العايم -->
+  <div class="dock-header" role="navigation" aria-label="Main Navigation">
+    <div class="dock-shell">
+      <ul class="dock-list">
+        <li class="dock-item"><a class="dock-btn" data-label="Home" href="index.html"><i class="fas fa-home"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Portfolio" href="portfolio.html"><i class="fas fa-images"></i></a></li>
+        <li class="dock-item"><a class="dock-btn active" data-label="Terms" href="terms.html" aria-current="page"><i class="fas fa-file-contract"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Price" href="price.html"><i class="fas fa-tag"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Games" href="games.html"><i class="fas fa-gamepad"></i></a></li>
+      </ul>
+
+      <div class="lang-switcher" role="group" aria-label="Language Switcher">
+        <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button" aria-pressed="false">AR</button>
+        <button class="lang-btn" data-lang="es" type="button" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="content-page">
+    <h1 class="page-title"
+        data-en="TERMS OF SERVICE"
+        data-ar="شروط الخدمة"
+        data-es="TÉRMINOS DEL SERVICIO">
+      TERMS OF SERVICE
+    </h1>
+
+    <div class="rules-lead">
+      <span class="pill">
+        <i class="fa-solid fa-handshake"></i>
+        <span data-en="Rules &amp; Collaboration"
+              data-ar="القوانين والتعاون"
+              data-es="Reglas y Colaboración">
+          Rules &amp; Collaboration
+        </span>
+      </span>
+    </div>
+
+    <section class="rules-grid">
+      <article class="rule-card reveal" style="--delay:0ms">
+        <div class="rule-icon"><i class="fa-solid fa-code"></i></div>
+        <h3 class="rule-title"
+            data-en="I don't Script UIs."
+            data-ar="أنا لا أبرمج الواجهات UI."
+            data-es="No programo las interfaces UI.">
+          I don't Script UIs.
+        </h3>
+        <p class="rule-desc"
+           data-en="Focus is on professional UI/UX design and import. Scripting or gameplay logic is not part of the service."
+           data-ar="تركيزي على تصميم واجهة مستخدم وتجربة مستخدم UI/UX بشكل احترافي واستيرادها للعبتك. البرمجة او منطق اللعب ليست جزءا من الخدمة."
+           data-es="Mi trabajo se centra en el diseño profesional de UI/UX y la importación al juego. La programación o la lógica de juego no forman parte del servicio.">
+          Focus is on professional UI/UX design and import. Scripting or gameplay logic is not part of the service.
+        </p>
+      </article>
+
+      <article class="rule-card reveal" style="--delay:120ms">
+        <div class="rule-icon"><i class="fa-regular fa-file-lines"></i></div>
+        <h3 class="rule-title"
+            data-en="The UI is delivered as an .rbxl or .rbxm file only."
+            data-ar="الواجهة تسلم كملف ‎.rbxl او ‎.rbxm فقط."
+            data-es="La interfaz se entrega solo como archivo .rbxl o .rbxm.">
+          The UI is delivered as an .rbxl or .rbxm file only.
+        </h3>
+        <p class="rule-desc"
+           data-en="Assets are organized, named clearly and scaled to work across devices for smooth import."
+           data-ar="كل العناصر منظمة وبأسماء واضحة ومقاسات مناسبة لكل الاجهزة علشان الاستيراد يكون سهل."
+           data-es="Todos los assets van organizados, con nombres claros y escalados para todos los dispositivos para importar sin problemas.">
+          Assets are organized, named clearly and scaled to work across devices for smooth import.
+        </p>
+      </article>
+
+      <article class="rule-card reveal" style="--delay:240ms">
+        <div class="rule-icon"><i class="fa-solid fa-ban"></i></div>
+        <h3 class="rule-title"
+            data-en="No resell without permission."
+            data-ar="ممنوع إعادة البيع بدون إذن."
+            data-es="No puedes revender sin permiso.">
+          No resell without permission.
+        </h3>
+        <p class="rule-desc"
+           data-en="You don't have the right to resell UIs made by me without my permission. Personal &amp; project use only."
+           data-ar="ما تقدرش تعيد بيع الواجهات اللي انا صممتها من غير اذني. للاستخدام الشخصي او للمشروع فقط."
+           data-es="No tienes derecho a revender las UIs que diseño sin mi permiso. Solo uso personal o del proyecto.">
+          You don't have the right to resell UIs made by me without my permission. Personal &amp; project use only.
+        </p>
+      </article>
+
+      <article class="rule-card reveal" style="--delay:360ms">
+        <div class="rule-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <h3 class="rule-title"
+            data-en="Refund policy"
+            data-ar="سياسة الاسترجاع"
+            data-es="Política de reembolso">
+          Refund policy
+        </h3>
+        <p class="rule-desc"
+           data-en="If you cancel the order, refunds aren't available. If I cancel the order, you'll be fully refunded for any Robux you paid."
+           data-ar="لو انت لغيت الطلب مافيش استرجاع. لو انا اللي لغيت الطلب هترجعلك كل الروبوكس اللي دفعتها كاملة."
+           data-es="Si tu cancelas el pedido no hay reembolso. Si yo lo cancelo recibirás de vuelta todos los Robux que pagaste.">
+          If you cancel the order, refunds aren't available. If I cancel the order, you'll be fully refunded for any Robux you paid.
+        </p>
+      </article>
+    </section>
+
+    <!-- نص قديم SEO خفي -->
+    <div class="terms-content legacy-terms" aria-hidden="true">
+      <p><strong>• I don't Script UIs.</strong></p>
+      <p><strong>• The UI is delivered as an .rbxl or .rbxm file only.</strong></p>
+      <p><strong>• You don't have the right to resell UIs made by me without my permission.</strong></p>
+      <p><strong>• You will not get refunded if you cancel the order, however, if I was the one who canceled your order, I will refund you any robux you have paid.</strong></p>
+    </div>
+  </main>
+
+  <footer class="dock-footer">
+    <div class="dock-footer-shell">
+      <div class="dock-footer-item time-block">
+        <span class="time-label"
+              data-en="Cairo Time:"
+              data-ar="وقت القاهرة:"
+              data-es="Hora de El Cairo:">
+          Cairo Time:
+        </span>
+        <span class="time-value" id="current-time">--:--:--</span>
+
+        <a class="social-btn discord-btn"
+           href="https://discord.com/users/1077620522680057856"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Discord">
+          <i class="fab fa-discord" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="dock-footer-item comm-block" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"><div class="dot"></div></div>
+        <span>
+          <strong data-en="Commissions:" data-ar="الطلبات:" data-es="Comisiones:">Commissions:</strong>
+          <span data-en="Opened" data-ar="مفتوحة" data-es="Abiertas">Opened</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- overlay الانتقال -->
+  <div id="page-transition-overlay" class="page-transition-overlay" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

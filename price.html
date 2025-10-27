@@ -1,0 +1,1124 @@
+<!-- price.html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Professional Roblox UI/UX design pricing plans with tailored packages for every project"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>Pricing & Packages | Youssef Design</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- ستايل خاص بالـ plans -->
+  <style>
+    :root{
+      --text-main:#ffffff;
+      --text-dim:#a3a8c7;
+      --panel-bg:rgba(10,12,18,.72);
+      --panel-border:rgba(171,185,223,.22);
+      --row-bg:rgba(255,255,255,.03);
+      --row-border:rgba(171,185,223,.12);
+      --radius-lg:24px;
+      --radius-md:14px;
+
+      --good-green-start:#4ade80;
+      --good-green-end:#16a34a;
+      --bad-red-start:#ef4444;
+      --bad-red-end:#7a1111;
+    }
+
+    .content-page>.page-subtitle{
+      max-width:720px;
+      margin:0 auto 28px;
+      color:var(--text-dim);
+      font-size:.95rem;
+      line-height:1.6;
+      letter-spacing:.01em;
+      position:relative;
+    }
+    .content-page>.page-subtitle::after{
+      content:"";
+      display:block;
+      height:2px;
+      width:min(220px,50%);
+      margin:12px auto 0;
+      border-radius:999px;
+      background:linear-gradient(90deg,
+        rgba(138,180,255,.5) 0%,
+        rgba(167,139,250,.5) 100%);
+      box-shadow:0 0 22px rgba(138,180,255,.4);
+    }
+
+    .pricing-wrapper{
+      width:100%;
+      max-width:1300px;
+      margin:0 auto;
+      padding:clamp(16px,2vw,32px) 10px 40px;
+      display:grid;
+      gap:clamp(18px,2.2vw,28px);
+      grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));
+    }
+
+    .plan-card{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+
+      background:radial-gradient(
+          800px 400px at 0% 0%,
+          rgba(var(--accent-rgb),.16) 0%,
+          transparent 70%
+        ),
+        var(--panel-bg);
+
+      border:1px solid var(--panel-border);
+      border-radius:var(--radius-lg);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,.9),
+        0 24px 64px rgba(var(--accent-rgb),.16);
+      padding:24px 24px 20px;
+
+      transition:
+        box-shadow .28s cubic-bezier(.2,.9,.2,1),
+        border-color .28s ease,
+        transform .28s cubic-bezier(.2,.9,.2,1),
+        background .28s ease;
+
+      opacity:0;
+      transform:translateY(18px) scale(.985);
+    }
+
+    .plan-card.show{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .plan-card:hover{
+      transform:translateY(-4px) scale(1.01);
+      border-color:rgba(var(--accent-rgb),.5);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.95),
+        0 30px 90px rgba(var(--accent-rgb),.28),
+        0 0 120px rgba(var(--accent-rgb),.22);
+    }
+
+    .plan-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      padding:1px;
+      background:
+        conic-gradient(
+          from var(--deg,0deg),
+          rgba(var(--accent-rgb),.6) 0deg,
+          rgba(255,255,255,.0) 120deg,
+          rgba(var(--accent-rgb),.6) 240deg,
+          rgba(255,255,255,.0) 360deg
+        );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+      pointer-events:none;
+      opacity:.4;
+      filter:blur(20px);
+      animation:spin 12s linear infinite;
+    }
+
+    @keyframes spin{to{--deg:360deg}}
+
+    .plan-basic { --accent-rgb:138,180,255; }
+    .plan-medium{ --accent-rgb:167,139,250; }
+    .plan-full  { --accent-rgb:103,232,249; }
+
+    .plan-card.featured{
+      background:
+        radial-gradient(
+          900px 500px at 0% 0%,
+          rgba(var(--accent-rgb),.22) 0%,
+          transparent 70%
+        ),
+        radial-gradient(
+          600px 300px at 100% 0%,
+          rgba(var(--accent-rgb),.14) 0%,
+          transparent 70%
+        ),
+        var(--panel-bg);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.95),
+        0 40px 120px rgba(var(--accent-rgb),.32),
+        0 0 180px rgba(var(--accent-rgb),.25);
+      border-color:rgba(var(--accent-rgb),.55);
+    }
+
+    .plan-top{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      gap:8px;
+      margin-bottom:20px;
+    }
+
+    .mini-chip{
+      display:flex;
+      align-items:center;
+      gap:6px;
+
+      font-weight:600;
+      font-size:.7rem;
+      line-height:1.2;
+      letter-spacing:.02em;
+      color:var(--text-main);
+
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(var(--accent-rgb),.08);
+      border:1px solid rgba(var(--accent-rgb),.4);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 14px 30px rgba(0,0,0,.8);
+    }
+    .mini-chip i{
+      font-size:.7rem;
+      color:rgb(var(--accent-rgb));
+    }
+
+    .chip-popular{
+      background:linear-gradient(
+        135deg,
+        rgb(var(--accent-rgb)) 0%,
+        #ffffff 65%
+      );
+      border:0;
+      color:#000;
+      font-weight:700;
+      box-shadow:
+        0 16px 32px rgba(0,0,0,.85),
+        0 0 32px rgba(var(--accent-rgb),.45);
+    }
+
+    .plan-pricing{
+      color:var(--text-main);
+      margin-bottom:20px;
+    }
+
+    .plan-price{
+      font-family:"Montserrat","Cairo",system-ui,sans-serif;
+      font-weight:700;
+      font-size:clamp(1.2rem,1vw + 1rem,1.5rem);
+      line-height:1.35;
+      letter-spacing:.02em;
+      text-shadow:0 0 22px rgba(var(--accent-rgb),.5);
+      margin:0 0 8px;
+      color:#fff;
+    }
+
+    .plan-desc{
+      margin:0;
+      font-size:.8rem;
+      font-weight:500;
+      line-height:1.4;
+      color:var(--text-dim);
+    }
+
+    .plan-cta{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      width:100%;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.9rem;
+      line-height:1.2;
+      letter-spacing:.02em;
+      padding:14px 16px;
+      text-align:center;
+      color:#000;
+      background:linear-gradient(
+        135deg,
+        rgb(var(--accent-rgb)) 0%,
+        #ffffff 80%
+      );
+      box-shadow:
+        0 20px 44px rgba(0,0,0,.9),
+        0 0 40px rgba(var(--accent-rgb),.4);
+      border:1px solid rgba(255,255,255,.5);
+      position:relative;
+      overflow:hidden;
+      transition:
+        transform .18s cubic-bezier(.2,.9,.2,1),
+        box-shadow .22s ease,
+        filter .22s ease;
+    }
+
+    .plan-cta::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.55) 50%,
+        transparent 80%
+      );
+      translate:-100% 0;
+      opacity:.4;
+      pointer-events:none;
+      transition:translate .6s cubic-bezier(.2,.9,.2,1);
+    }
+
+    .plan-cta:hover{
+      transform:translateY(-2px) scale(1.02);
+      filter:saturate(112%);
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.95),
+        0 0 50px rgba(var(--accent-rgb),.5);
+    }
+
+    .plan-cta:hover::after{
+      translate:100% 0;
+    }
+
+    .feature-list{
+      list-style:none;
+      margin:24px 0 0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .feature-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      min-height:44px;
+      padding:10px 12px;
+
+      background:var(--row-bg);
+      border:1px solid var(--row-border);
+      border-radius:var(--radius-md);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 16px 32px rgba(0,0,0,.85);
+
+      font-size:.85rem;
+      font-weight:500;
+      line-height:1.4;
+      color:#dfe2ff;
+    }
+
+    .feature-item.bad{
+      color:#8a8fad;
+      opacity:.9;
+    }
+
+    .feat-icon{
+      width:26px;
+      height:26px;
+      flex-shrink:0;
+
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,.45);
+      box-shadow:0 10px 24px rgba(0,0,0,.9);
+
+      display:grid;
+      place-items:center;
+      font-size:.7rem;
+      font-weight:700;
+      line-height:1;
+      text-shadow:0 0 8px rgba(0,0,0,.7);
+    }
+
+    .feature-item.good .feat-icon{
+      background:
+        radial-gradient(circle at 30% 20%,rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 40%),
+        radial-gradient(circle,var(--good-green-start) 0%,var(--good-green-end) 70%);
+      color:#000;
+      text-shadow:none;
+      border-color:rgba(255,255,255,.6);
+      box-shadow:
+        0 0 16px rgba(16,185,129,.55),
+        0 10px 24px rgba(0,0,0,.9);
+    }
+
+    .feature-item.bad .feat-icon{
+      background:
+        radial-gradient(circle at 30% 20%,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 40%),
+        radial-gradient(circle,var(--bad-red-start) 0%,var(--bad-red-end) 70%);
+      color:#fff;
+      border-color:rgba(255,255,255,.6);
+      box-shadow:
+        0 0 16px rgba(239,68,68,.55),
+        0 10px 24px rgba(0,0,0,.9);
+    }
+
+    .modal{
+      background:linear-gradient(180deg, rgba(2,6,23,.80), rgba(2,8,23,.65));
+      backdrop-filter:blur(8px);
+    }
+
+    .why-modal{
+      position:relative;
+      width:min(680px,95vw);
+      max-height:80vh;
+      overflow:auto;
+
+      border-radius:18px;
+      padding:22px;
+      color:var(--text-main);
+
+      background:linear-gradient(180deg,
+        rgba(255,255,255,.07) 0%,
+        rgba(255,255,255,.015) 100%);
+      border:1px solid rgba(171,185,223,.35);
+
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.9),
+        0 0 80px rgba(138,180,255,.3);
+
+      isolation:isolate;
+    }
+
+    .why-close,.close-btn{
+      position:absolute;
+      top:10px;
+      right:10px;
+      z-index:3;
+
+      width:36px;
+      height:36px;
+      border-radius:12px;
+
+      border:1px solid rgba(255,255,255,.7);
+      background:linear-gradient(135deg, rgb(138,180,255) 0%, rgb(167,139,250) 80%);
+      color:#000;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+
+      display:grid;
+      place-items:center;
+
+      box-shadow:
+        0 16px 40px rgba(0,0,0,.85),
+        0 0 30px rgba(138,180,255,.5);
+    }
+    .why-close:active,.close-btn:active{ transform:scale(.96) }
+
+    .why-modal h2{
+      margin:0 0 14px;
+      font-weight:700;
+      font-size:1rem;
+      letter-spacing:.02em;
+      color:#fff;
+      text-shadow:0 0 14px rgba(171,185,223,.5);
+    }
+
+    .why-features{
+      list-style:none;
+      margin:0;
+      padding:4px 2px 6px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      position:relative;
+      z-index:2;
+    }
+    .why-features li{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      padding:12px 14px;
+      border-radius:12px;
+      color:#dfe6ff;
+      font-weight:600;
+      line-height:1.4;
+
+      background:var(--row-bg);
+      border:1px solid var(--row-border);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.07),
+        0 18px 44px rgba(0,0,0,.8);
+    }
+    .why-features li i{
+      width:28px;
+      height:28px;
+      border-radius:9px;
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+      border:1px solid rgba(255,255,255,.6);
+      background:linear-gradient(
+        135deg,
+        rgb(138,180,255) 0%,
+        rgb(167,139,250) 80%
+      );
+      color:#000;
+      font-size:.8rem;
+      font-weight:700;
+      text-shadow:none;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,.9),
+        0 0 20px rgba(138,180,255,.45);
+    }
+
+    .why-me{
+      display:grid;
+      place-items:center;
+      margin:18px 0 36px;
+    }
+    .why-btn{
+      position:relative;
+      border:0;
+      background:transparent;
+      color:#e7ecff;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:700;
+      letter-spacing:.02em;
+      cursor:pointer;
+      isolation:isolate;
+      font-size:.9rem;
+      line-height:1.2;
+      box-shadow:none;
+      transition:color .2s ease;
+    }
+    .why-btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:rgba(138,180,255,.08);
+      border:1px solid rgba(138,180,255,.4);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 14px 30px rgba(0,0,0,.8),
+        0 0 30px rgba(138,180,255,.4);
+      pointer-events:none;
+      transition:box-shadow .2s ease, background .2s ease;
+    }
+    .why-btn:hover{
+      color:#fff;
+    }
+    .why-btn:hover::after{
+      background:rgba(138,180,255,.14);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 20px 40px rgba(0,0,0,.9),
+        0 0 40px rgba(138,180,255,.5);
+    }
+
+    .faq-section h2{
+      text-shadow:0 0 14px rgba(171,185,223,.5);
+    }
+
+    @media(max-width:480px){
+      .plan-card{
+        border-radius:20px;
+        padding:20px 20px 18px;
+      }
+      .plan-price{
+        font-size:1.15rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="starfield-container"><canvas id="stars"></canvas></div>
+
+  <!-- الهيدر -->
+  <div class="dock-header" role="navigation" aria-label="Main Navigation">
+    <div class="dock-shell">
+      <ul class="dock-list">
+        <li class="dock-item"><a class="dock-btn" data-label="Home" href="index.html"><i class="fas fa-home"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Portfolio" href="portfolio.html"><i class="fas fa-images"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Terms" href="terms.html"><i class="fas fa-file-contract"></i></a></li>
+        <li class="dock-item"><a class="dock-btn active" data-label="Price" href="price.html" aria-current="page"><i class="fas fa-tag"></i></a></li>
+        <li class="dock-item"><a class="dock-btn" data-label="Games" href="games.html"><i class="fas fa-gamepad"></i></a></li>
+      </ul>
+
+      <div class="lang-switcher" role="group" aria-label="Language Switcher">
+        <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button" aria-pressed="false">AR</button>
+        <button class="lang-btn" data-lang="es" type="button" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="content-page">
+    <h1 class="page-title"
+        data-en="CHOOSE YOUR PERFECT PLAN"
+        data-ar="اختر الباقة المثالية لك"
+        data-es="ELIGE TU PLAN PERFECTO">
+      CHOOSE YOUR PERFECT PLAN
+    </h1>
+
+    <p class="page-subtitle"
+       data-en="Tailored packages to match your project's scale and style."
+       data-ar="باقات مصممة خصيصًا لتتناسب مع حجم وأسلوب مشروعك."
+       data-es="Paquetes personalizados para adaptarse a la escala y estilo de tu proyecto.">
+       Tailored packages to match your project's scale and style.
+    </p>
+
+    <!-- الباقات -->
+    <section class="pricing-wrapper" aria-label="Pricing">
+
+      <!-- Basic -->
+      <article class="plan-card plan-basic reveal" tabindex="0">
+        <div class="plan-top">
+          <span class="mini-chip">
+            <i class="fa-solid fa-feather" aria-hidden="true"></i>
+            <span
+              data-en="Basic Pack PerTask"
+              data-ar="باقة باسيك لكل مهمة"
+              data-es="Paquete Básico por tarea">
+              Basic Pack PerTask
+            </span>
+          </span>
+        </div>
+
+        <div class="plan-pricing">
+          <p class="plan-price"
+             data-en="20$ or 5K + Tax Robux"
+             data-ar="20$ أو 5K + الضريبة روبوكس"
+             data-es="20$ o 5K + impuesto Robux">
+            20$ or 5K + Tax Robux
+          </p>
+          <p class="plan-desc"
+             data-en="Best for small UI tasks / mini features"
+             data-ar="مناسب للمهام الصغيرة في الـUI / الخصائص البسيطة"
+             data-es="Ideal para tareas UI pequeñas / funciones mini">
+            Best for small UI tasks / mini features
+          </p>
+        </div>
+
+        <button class="plan-cta" type="button"
+                data-en="Go with this plan"
+                data-ar="اختر هذه الباقة"
+                data-es="Elegir este plan">
+          Go with this plan
+        </button>
+
+        <ul class="feature-list">
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Cartoon &amp; Studs styles"
+              data-ar="ستايل كرتوني وستايل Studs"
+              data-es="Estilos Cartoon y Studs">
+              Cartoon &amp; Studs styles
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Medium UI Quality"
+              data-ar="جودة واجهة متوسطة"
+              data-es="Calidad de UI media">
+              Medium UI Quality
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="5 Revisions"
+              data-ar="٥ تعديلات"
+              data-es="5 revisiones">
+              5 Revisions
+            </span>
+          </li>
+          <li class="feature-item bad">
+            <span class="feat-icon"><i class="fa-solid fa-xmark" aria-hidden="true"></i></span>
+            <span
+              data-en="No PSD Files"
+              data-ar="بدون ملفات PSD"
+              data-es="Sin archivos PSD">
+              No PSD Files
+            </span>
+          </li>
+          <li class="feature-item bad">
+            <span class="feat-icon"><i class="fa-solid fa-xmark" aria-hidden="true"></i></span>
+            <span
+              data-en="No Import included"
+              data-ar="استيراد غير مشمول"
+              data-es="Importación no incluida">
+              No Import included
+            </span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Medium -->
+      <article class="plan-card plan-medium featured reveal" tabindex="0">
+        <div class="plan-top">
+          <span class="mini-chip">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span
+              data-en="Medium Pack PerTask"
+              data-ar="باقة ميديام لكل مهمة"
+              data-es="Paquete Medio por tarea">
+              Medium Pack PerTask
+            </span>
+          </span>
+
+          <span class="mini-chip chip-popular">
+            <i class="fa-solid fa-fire" aria-hidden="true"></i>
+            <span
+              data-en="Most Popular"
+              data-ar="الأكثر طلبًا"
+              data-es="El más popular">
+              Most Popular
+            </span>
+          </span>
+        </div>
+
+        <div class="plan-pricing">
+          <p class="plan-price"
+             data-en="30$ or 8K + Tax Robux"
+             data-ar="30$ أو 8K + الضريبة روبوكس"
+             data-es="30$ o 8K + impuesto Robux">
+            30$ or 8K + Tax Robux
+          </p>
+          <p class="plan-desc"
+             data-en="Great for high-appeal themed UIs"
+             data-ar="ممتاز لواجهات ثيم قوية وجذابة"
+             data-es="Perfecto para UIs temáticas con alto atractivo">
+            Great for high-appeal themed UIs
+          </p>
+        </div>
+
+        <button class="plan-cta" type="button"
+                data-en="Go with this plan"
+                data-ar="اختر هذه الباقة"
+                data-es="Elegir este plan">
+          Go with this plan
+        </button>
+
+        <ul class="feature-list">
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Anime &amp; Horror styles"
+              data-ar="ستايل أنمي وستايل رعب"
+              data-es="Estilos Anime y Terror">
+              Anime &amp; Horror styles
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Import included"
+              data-ar="يشمل الاستيراد داخل لعبتك"
+              data-es="Incluye importación al juego">
+              Import included
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Medium UI Quality"
+              data-ar="جودة واجهة متوسطة"
+              data-es="Calidad de UI media">
+              Medium UI Quality
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="10 Revisions"
+              data-ar="١٠ تعديلات"
+              data-es="10 revisiones">
+              10 Revisions
+            </span>
+          </li>
+          <li class="feature-item bad">
+            <span class="feat-icon"><i class="fa-solid fa-xmark" aria-hidden="true"></i></span>
+            <span
+              data-en="No PSD Files"
+              data-ar="بدون ملفات PSD"
+              data-es="Sin archivos PSD">
+              No PSD Files
+            </span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Full -->
+      <article class="plan-card plan-full reveal" tabindex="0">
+        <div class="plan-top">
+          <span class="mini-chip">
+            <i class="fa-solid fa-crown" aria-hidden="true"></i>
+            <span
+              data-en="Full Game UI &amp; Any Style"
+              data-ar="واجهة كاملة للعبة + أي ستايل"
+              data-es="UI completa del juego + cualquier estilo">
+              Full Game UI &amp; Any Style
+            </span>
+          </span>
+        </div>
+
+        <div class="plan-pricing">
+          <p class="plan-price"
+             data-en="235$ or 80K + Tax Robux"
+             data-ar="235$ أو 80K + الضريبة روبوكس"
+             data-es="235$ o 80K + impuesto Robux">
+            235$ or 80K + Tax Robux
+          </p>
+          <p class="plan-desc"
+             data-en="Full game coverage / premium polish"
+             data-ar="واجهة كاملة للعبة / دقة وتشطيب بروفيشنال"
+             data-es="Cobertura completa del juego / acabado premium">
+            Full game coverage / premium polish
+          </p>
+        </div>
+
+        <button class="plan-cta" type="button"
+                data-en="Go with this plan"
+                data-ar="اختر هذه الباقة"
+                data-es="Elegir este plan">
+          Go with this plan
+        </button>
+
+        <ul class="feature-list">
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="All Styles Included"
+              data-ar="جميع الأنماط متاحة"
+              data-es="Todos los estilos incluidos">
+              All Styles Included
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Import included"
+              data-ar="يشمل الاستيراد داخل لعبتك"
+              data-es="Incluye importación al juego">
+              Import included
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="High UI Quality"
+              data-ar="جودة واجهة عالية"
+              data-es="Alta calidad de UI">
+              High UI Quality
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="35 Revisions"
+              data-ar="٣٥ تعديل"
+              data-es="35 revisiones">
+              35 Revisions
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="PSD Files Included"
+              data-ar="ملفات PSD مرفقة"
+              data-es="Archivos PSD incluidos">
+              PSD Files Included
+            </span>
+          </li>
+          <li class="feature-item good">
+            <span class="feat-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+            <span
+              data-en="Full UI Folders + Unlimited Revisions"
+              data-ar="مجلدات واجهة كاملة + تعديلات غير محدودة"
+              data-es="Carpetas UI completas + revisiones ilimitadas">
+              Full UI Folders + Unlimited Revisions
+            </span>
+          </li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- زر واي -->
+    <div class="why-me">
+      <button class="why-btn" id="openWhyModal" type="button">
+        <span
+          data-en="Why choose me?"
+          data-ar="ليش تختارني؟"
+          data-es="¿Por qué elegirme?">
+          Why choose me?
+        </span>
+      </button>
+    </div>
+
+    <!-- مودال -->
+    <div id="whyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="whyTitle" aria-describedby="whyDesc">
+      <div class="why-modal">
+        <button class="why-close close-btn" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <h2 id="whyTitle"
+            data-en="Why choose me?"
+            data-ar="ليش تختارني؟"
+            data-es="¿Por qué elegirme?">
+          Why choose me?
+        </h2>
+        <p id="whyDesc" class="visually-hidden"
+           data-en="Reasons to choose my service."
+           data-ar="أسباب تخليك تختار خدمتي."
+           data-es="Razones para elegir mi servicio.">
+          Reasons to choose my service.
+        </p>
+        <ul class="why-features">
+          <li>
+            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+            <span
+              data-en="Up to 5 free revisions until you are 100% satisfied"
+              data-ar="حتى ٥ تعديلات مجانية لحد ما تكون راضي ١٠٠٪"
+              data-es="Hasta 5 revisiones gratis hasta que estés 100% satisfecho">
+              Up to 5 free revisions until you are 100% satisfied
+            </span>
+          </li>
+          <li>
+            <i class="fas fa-bell" aria-hidden="true"></i>
+            <span
+              data-en="I always keep you informed every step of the way"
+              data-ar="بفضلك على طول في التحديثات خطوة بخطوة"
+              data-es="Te mantengo informado en cada paso">
+              I always keep you informed every step of the way
+            </span>
+          </li>
+          <li>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span
+              data-en="As a full-time designer, you'll get frequent communication &amp; instant updates"
+              data-ar="بصفتي مصمم بدوام كامل، هتستلم تواصل مستمر وتحديثات فورية"
+              data-es="Como diseñador a tiempo completo, recibes comunicación constante y actualizaciones instantáneas">
+              As a full-time designer, you'll get frequent communication &amp; instant updates
+            </span>
+          </li>
+          <li>
+            <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+            <span
+              data-en="MONEY back guarantee if not satisfied"
+              data-ar="ضمان ترجيع الفلوس لو ما كنتش راضي"
+              data-es="Garantía de devolución del dinero si no quedas satisfecho">
+              MONEY back guarantee if not satisfied
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2
+        data-en="Frequently Asked Questions"
+        data-ar="الأسئلة الشائعة"
+        data-es="Preguntas frecuentes">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q1: How long does it take to complete a UI design?"
+                  data-ar="س١: كم ياخد وقت تصميم واجهة UI كاملة؟"
+                  data-es="P1: ¿Cuánto tarda terminar un diseño UI?">
+            Q1: How long does it take to complete a UI design?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="The delivery time depends on the complexity and number of frames. On average, a single frame takes 1–3 days."
+              data-ar="الوقت يعتمد على صعوبة وعدد الإطارات. غالباً الإطار الواحد بياخد من يوم لـ٣ أيام."
+              data-es="El tiempo depende de la complejidad y el número de pantallas. En promedio, una pantalla toma 1–3 días.">
+              The delivery time depends on the complexity and number of frames. On average, a single frame takes 1–3 days.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q2: Do you provide revisions?"
+                  data-ar="س٢: هل بتوفر تعديلات؟"
+                  data-es="P2: ¿Ofreces revisiones?">
+            Q2: Do you provide revisions?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="Yes, I offer up to 5 free revisions for every project."
+              data-ar="نعم، أوفر حتى ٥ تعديلات مجانًا لكل مشروع."
+              data-es="Sí, ofrezco hasta 5 revisiones gratis en cada proyecto.">
+              Yes, I offer up to 5 free revisions for every project.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q3: Can you import the designs directly into Roblox Studio?"
+                  data-ar="س٣: هل تقدر تركّب الواجهة مباشرةً في Roblox Studio؟"
+                  data-es="P3: ¿Puedes importar el diseño directo en Roblox Studio?">
+            Q3: Can you import the designs directly into Roblox Studio?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="Yes, importing is one of my services. I ensure all designs are scaled and optimized for every device."
+              data-ar="نعم، الاستيراد جزء من خدمتي. أضمن إن الواجهة تكون متناسقة ومجهزة لكل الأجهزة."
+              data-es="Sí, la importación es parte de mi servicio. Me aseguro de que todo esté escalado y optimizado para cada dispositivo.">
+              Yes, importing is one of my services. I ensure all designs are scaled and optimized for every device.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q4: What payment methods do you accept?"
+                  data-ar="س٤: إيه طرق الدفع المتاحة؟"
+                  data-es="P4: ¿Qué métodos de pago aceptas?">
+            Q4: What payment methods do you accept?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="I accept PayPal and Robux. Robux prices already include Roblox tax."
+              data-ar="أقبل PayPal و Robux. أسعار الـRobux تشمل ضريبة روبلوكس."
+              data-es="Acepto PayPal y Robux. Los precios en Robux ya incluyen el impuesto de Roblox.">
+              I accept PayPal and Robux. Robux prices already include Roblox tax.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q5: What do I receive once the work is completed?"
+                  data-ar="س٥: إيه اللي هستلمه بعد ما الشغل يخلص؟"
+                  data-es="P5: ¿Qué recibo cuando el trabajo está terminado?">
+            Q5: What do I receive once the work is completed?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="You’ll receive organized PNGs or a direct import to your Roblox project, as you prefer."
+              data-ar="هتستلم صور PNG منظمة أو أعمل استيراد مباشر في لعبتك على Roblox — حسب اختيارك."
+              data-es="Recibirás PNGs organizados o una importación directa a tu proyecto de Roblox, como prefieras.">
+              You’ll receive organized PNGs or a direct import to your Roblox project, as you prefer.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q6: Do you offer refunds?"
+                  data-ar="س٦: هل بتوفر استرجاع فلوس؟"
+                  data-es="P6: ¿Ofreces reembolsos?">
+            Q6: Do you offer refunds?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="Yes, I provide a money-back guarantee if you are not satisfied with the results."
+              data-ar="نعم، لو مش راضي عن النتيجة عندك ضمان استرجاع فلوسك."
+              data-es="Sí, ofrezco garantía de devolución si no quedas satisfecho.">
+              Yes, I provide a money-back guarantee if you are not satisfied with the results.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q7: Do you work full-time?"
+                  data-ar="س٧: هل انت شغال بدوام كامل؟"
+                  data-es="P7: ¿Trabajas a tiempo completo?">
+            Q7: Do you work full-time?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="Yes, I’m a full-time UI/UX artist with daily availability for updates and communication."
+              data-ar="نعم، أنا مصمم UI/UX بدوام كامل ومتوفر يوميًا للتحديثات والتواصل."
+              data-es="Sí, soy diseñador UI/UX a tiempo completo y estoy disponible a diario para actualizaciones y comunicación.">
+              Yes, I’m a full-time UI/UX artist with daily availability for updates and communication.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button"
+                  data-en="Q8: Can you take rush orders / tight deadlines?"
+                  data-ar="س٨: تقدر تستلم طلب مستعجل / ديدلاين ضيق؟"
+                  data-es="P8: ¿Puedes aceptar pedidos urgentes / plazos muy cortos?">
+            Q8: Can you take rush orders / tight deadlines?
+          </button>
+          <div class="faq-answer">
+            <p
+              data-en="Rush projects are possible depending on the scope and current queue. Message me to confirm availability."
+              data-ar="الطلبات المستعجلة ممكن حسب حجم الشغل والطابور الحالي. ابعتلي علشان أتأكد من التوفر."
+              data-es="Los proyectos urgentes son posibles dependiendo del alcance y la cola actual. Envíame mensaje para confirmar disponibilidad.">
+              Rush projects are possible depending on the scope and current queue. Message me to confirm availability.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-container">
+        <p class="cta-text"
+           data-en="Still have questions? I'm here to help!"
+           data-ar="لسه عندك أسئلة؟ أنا جاهز أساعدك!"
+           data-es="¿Aún tienes dudas? ¡Estoy aquí para ayudarte!">
+          Still have questions? I'm here to help!
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="dock-footer">
+    <div class="dock-footer-shell">
+      <div class="dock-footer-item time-block">
+        <span class="time-label"
+              data-en="Cairo Time:"
+              data-ar="وقت القاهرة:"
+              data-es="Hora de El Cairo:">
+          Cairo Time:
+        </span>
+        <span class="time-value" id="current-time">--:--:--</span>
+
+        <a class="social-btn discord-btn"
+           href="https://discord.com/users/1077620522680057856"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Discord">
+          <i class="fab fa-discord" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="dock-footer-item comm-block" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"><div class="dot"></div></div>
+        <span>
+          <strong data-en="Commissions:" data-ar="الطلبات:" data-es="Comisiones:">Commissions:</strong>
+          <span data-en="Opened" data-ar="مفتوحة" data-es="Abiertas">Opened</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- overlay الانتقال -->
+  <div id="page-transition-overlay" class="page-transition-overlay" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

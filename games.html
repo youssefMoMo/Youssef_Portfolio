@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>Games | Youssef Design</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- ستايل الكروت بتاعة الألعاب -->
+  <style>
+    :root{
+      --accent-rgb:138,180,255;
+      --text-main:#ffffff;
+      --text-dim:#a3a8c7;
+    }
+
+    .games-wrap{
+      width:100%;
+      max-width:1100px;
+      margin:18px auto 70px;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+
+    .game-card{
+      --accent-rgb:138,180,255;
+      position:relative;
+      isolation:isolate;
+
+      display:grid;
+      grid-template-columns:minmax(220px,260px) 1fr;
+      gap:0;
+
+      border-radius:24px;
+      background:
+        radial-gradient(900px 400px at 0% 0%,
+          rgba(var(--accent-rgb),.16) 0%,
+          transparent 70%),
+        linear-gradient(180deg,
+          rgba(15,17,23,.8) 0%,
+          rgba(9,11,18,.6) 100%);
+      border:1px solid rgba(171,185,223,.22);
+
+      box-shadow:
+        0 32px 80px rgba(0,0,0,.9),
+        0 24px 64px rgba(138,180,255,.16);
+
+      overflow:hidden;
+
+      transform:translateY(18px) scale(.985);
+      opacity:0;
+      transition:
+        transform .6s cubic-bezier(.22,.61,.36,1),
+        opacity .6s ease,
+        box-shadow .28s cubic-bezier(.2,.9,.2,1),
+        border-color .28s ease;
+    }
+    .game-card.show{
+      opacity:1;
+      transform:none;
+    }
+    .game-card:hover{
+      transform:translateY(-4px) scale(1.01);
+      border-color:rgba(var(--accent-rgb),.5);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.95),
+        0 30px 90px rgba(138,180,255,.28),
+        0 0 120px rgba(138,180,255,.22);
+    }
+
+    .game-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      padding:1px;
+      background:conic-gradient(
+        from var(--deg,0deg),
+        rgba(var(--accent-rgb),.6) 0deg,
+        rgba(255,255,255,0) 120deg,
+        rgba(var(--accent-rgb),.6) 240deg,
+        rgba(255,255,255,0) 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+      pointer-events:none;
+      opacity:.4;
+      filter:blur(30px);
+      animation:spin 12s linear infinite;
+    }
+
+    @keyframes spin{to{--deg:360deg}}
+
+    .thumb-side{
+      position:relative;
+      border-radius:24px 0 0 24px;
+      overflow:hidden;
+      min-height:180px;
+      background:#0f1117;
+      isolation:isolate;
+    }
+    .thumb-link{
+      position:relative;
+      display:block;
+      width:100%;
+      height:100%;
+    }
+    .game-thumb{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      background:#0f1117;
+    }
+    .game-thumb.placeholder{
+      background:
+        radial-gradient(120% 120% at 50% -20%,
+          rgba(171,185,223,.12),
+          transparent 60%),
+        #0f1117;
+    }
+    .thumb-overlay{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 20% 20%,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,.4) 60%),
+        radial-gradient(circle at 80% 20%,
+          rgba(var(--accent-rgb),.32) 0%,
+          rgba(0,0,0,0) 60%),
+        linear-gradient(to bottom,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,.6) 80%);
+    }
+
+    @media(max-width:820px){
+      .game-card{
+        grid-template-columns:1fr;
+      }
+      .thumb-side{
+        border-radius:24px 24px 0 0;
+        min-height:180px;
+      }
+    }
+
+    .game-body{
+      padding:20px 20px 18px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .game-head{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .game-title{
+      font-size:1rem;
+      font-weight:800;
+      color:#fff;
+      letter-spacing:.02em;
+      line-height:1.4;
+      text-shadow:0 0 22px rgba(var(--accent-rgb),.4);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .game-title i{
+      font-size:.9rem;
+      line-height:1;
+      background:linear-gradient(135deg,
+        rgb(138,180,255) 0%,
+        rgb(167,139,250) 80%);
+      -webkit-background-clip:text;
+              background-clip:text;
+      color:transparent;
+      text-shadow:none;
+    }
+
+    .game-badge{
+      font-size:.7rem;
+      line-height:1.2;
+      font-weight:700;
+      color:#fff;
+      border-radius:999px;
+      padding:5px 8px;
+      background:rgba(var(--accent-rgb),.08);
+      border:1px solid rgba(var(--accent-rgb),.4);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 14px 30px rgba(0,0,0,.8),
+        0 0 24px rgba(var(--accent-rgb),.4);
+    }
+
+    .info-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .info-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:6px;
+
+      font-size:.85rem;
+      font-weight:500;
+      line-height:1.4;
+      color:#dfe2ff;
+
+      border-radius:12px;
+      padding:10px 12px;
+
+      background:linear-gradient(180deg,
+        rgba(255,255,255,.05) 0%,
+        rgba(255,255,255,.015) 100%);
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 14px 32px rgba(0,0,0,.85);
+    }
+
+    .info-row .label{
+      color:#fff;
+      font-weight:700;
+    }
+    .info-row.visits .label{
+      color:#cfe3ff;
+    }
+
+    .open-btn{
+      position:relative;
+      margin-top:16px;
+      align-self:flex-start;
+
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+
+      border-radius:999px;
+      font-weight:700;
+      font-size:.8rem;
+      line-height:1.2;
+      letter-spacing:.02em;
+      padding:10px 14px;
+      color:#000;
+
+      background:linear-gradient(135deg,
+        rgb(138,180,255) 0%,
+        #ffffff 80%);
+      border:1px solid rgba(255,255,255,.5);
+
+      box-shadow:
+        0 20px 44px rgba(0,0,0,.9),
+        0 0 40px rgba(138,180,255,.4);
+
+      overflow:hidden;
+      transition:
+        transform .18s cubic-bezier(.2,.9,.2,1),
+        filter .22s ease,
+        box-shadow .22s ease;
+    }
+    .open-btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.55) 50%,
+        transparent 80%
+      );
+      translate:-100% 0;
+      opacity:.4;
+      pointer-events:none;
+      transition:translate .6s cubic-bezier(.2,.9,.2,1);
+    }
+    .open-btn:hover{
+      transform:translateY(-2px) scale(1.02);
+      filter:saturate(112%);
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.95),
+        0 0 50px rgba(138,180,255,.5);
+      color:#000;
+    }
+    .open-btn:hover::after{
+      translate:100% 0;
+    }
+    .open-btn i{
+      font-size:.8rem;
+      line-height:1;
+    }
+
+    .total-visits{
+      --accent-rgb:138,180,255;
+      position:relative;
+      isolation:isolate;
+
+      width:100%;
+      max-width:980px;
+      margin:24px auto 0;
+      text-align:center;
+      border-radius:20px;
+      padding:16px 18px;
+
+      color:#dfe7ff;
+      background:
+        radial-gradient(900px 400px at 0% 0%,
+          rgba(var(--accent-rgb),.14) 0%,
+          transparent 70%),
+        linear-gradient(180deg,
+          rgba(171,185,223,.06) 0%,
+          rgba(171,185,223,.02) 100%);
+      border:1px solid rgba(171,185,223,.28);
+
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.8),
+        0 0 80px rgba(138,180,255,.18);
+    }
+    .total-visits::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      padding:1px;
+      background:conic-gradient(
+        from var(--deg2,0deg),
+        rgba(var(--accent-rgb),.6) 0deg,
+        rgba(255,255,255,0) 140deg,
+        rgba(var(--accent-rgb),.6) 280deg,
+        rgba(255,255,255,0) 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+      pointer-events:none;
+      opacity:.35;
+      filter:blur(24px);
+      animation:spin 14s linear infinite;
+    }
+
+    .total-visits strong{
+      font-weight:800;
+      color:#fff;
+      text-shadow:0 0 16px rgba(138,180,255,.5);
+    }
+    .more-note{
+      margin-top:8px;
+      opacity:.9;
+      color:var(--text-dim);
+      font-size:.9rem;
+    }
+
+    .modal{
+      background:linear-gradient(180deg, rgba(2,6,23,.80), rgba(2,8,23,.65));
+      backdrop-filter:blur(8px);
+    }
+    .close-btn{
+      position:absolute;
+      top:10px;
+      right:10px;
+      z-index:3;
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.7);
+      background:linear-gradient(135deg, rgb(138,180,255) 0%, rgb(167,139,250) 80%);
+      color:#000;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,.85),
+        0 0 30px rgba(138,180,255,.5);
+    }
+    .close-btn:active{ transform:scale(.96) }
+  </style>
+</head>
+
+<body>
+  <!-- خلفية نجوم -->
+  <div id="starfield-container"><canvas id="stars"></canvas></div>
+
+  <!-- الهيدر العايم -->
+  <header class="dock-header">
+    <div class="dock-shell">
+      <ul class="dock-list" role="navigation" aria-label="Main Navigation">
+        <li class="dock-item">
+          <a class="dock-btn" href="index.html" data-label="Home" aria-label="Home">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" href="portfolio.html" data-label="Portfolio" aria-label="Portfolio">
+            <i class="fas fa-images" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" href="terms.html" data-label="Terms" aria-label="Terms">
+            <i class="fas fa-file-contract" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" href="price.html" data-label="Price" aria-label="Price">
+            <i class="fas fa-tag" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn active" href="games.html" data-label="Games" aria-label="Games" aria-current="page">
+            <i class="fas fa-gamepad" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="lang-switcher" role="group" aria-label="Language Switcher">
+        <button class="lang-btn active" data-lang="en" type="button" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button" aria-pressed="false">AR</button>
+        <button class="lang-btn" data-lang="es" type="button" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- المحتوى -->
+  <main class="content-page">
+    <h1 class="page-title"
+        data-en="Games I Designed UI For"
+        data-ar="الألعاب التي صمّمت واجهتها"
+        data-es="Juegos para los que diseñé UI">
+      Games I Designed UI For
+    </h1>
+
+    <!-- هنا الـ JS بيحط الألعاب -->
+    <div id="gamesWrap" class="games-wrap" aria-live="polite"></div>
+
+    <!-- إجمالي الزيارات -->
+    <div class="total-visits">
+      <div>
+        <strong
+          data-en="Total visits across these games: "
+          data-ar="إجمالي الزيارات عبر هذه الألعاب: "
+          data-es="Visitas totales en estos juegos: ">
+          Total visits across these games:
+        </strong>
+        <span id="totalVisits">—</span>
+      </div>
+      <div class="more-note"
+           data-en="...and there is more than all that"
+           data-ar="و يوجد اكثر من كل ذلك"
+           data-es="...y hay más que todo eso">
+        و يوجد اكثر من كل ذلك
+      </div>
+    </div>
+  </main>
+
+  <!-- مودال عرض صورة (لو احتجته) -->
+  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" style="display:none;">
+    <span class="close-btn" id="closeModal" role="button" tabindex="0" aria-label="Close image modal">&times;</span>
+    <div class="modal-content">
+      <h2 id="modalTitle" class="visually-hidden">Image preview</h2>
+      <p id="modalDesc" class="visually-hidden">Full size image preview.</p>
+      <img src="" alt="Full size image" id="modalImage"/>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer class="dock-footer">
+    <div class="dock-footer-shell">
+      <div class="dock-footer-item time-block">
+        <span class="time-label"
+              data-en="Cairo Time:" data-ar="وقت القاهرة:" data-es="Hora de El Cairo:">
+          Cairo Time:
+        </span>
+        <span class="time-value" id="current-time" aria-live="polite">--:--:--</span>
+      </div>
+
+      <div class="dock-footer-item social-block">
+        <a class="social-btn"
+           href="https://discord.com/users/1077620522680057856"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Discord">
+          <i class="fab fa-discord" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="dock-footer-item comm-block" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"><div class="dot"></div></div>
+        <div class="comm-text">
+          <strong data-en="Commissions:" data-ar="الطلبات:" data-es="Comisiones:">Commissions:</strong>
+          <span data-en="Opened" data-ar="مفتوحة" data-es="Abiertas">Opened</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- overlay الانتقال -->
+  <div id="page-transition-overlay" class="page-transition-overlay" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

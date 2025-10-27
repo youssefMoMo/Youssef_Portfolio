@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>Home | Youssef Design</title>
+
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- ستايلات الصفحة الرئيسية فقط -->
+  <style>
+    /* الصفحة الرئيسية نفسها */
+    .home-page{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:1300px;
+      margin:0 auto;
+      padding:180px 20px 260px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      color:#d7dcf8;
+    }
+
+    .hero-block{
+      max-width:900px;
+      width:100%;
+      margin:0 auto 40px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .hero-title{
+      font-family:"Montserrat","Cairo",system-ui,sans-serif;
+      font-weight:700;
+      font-size:clamp(2rem,1.2vw + 1.5rem,2.6rem);
+      line-height:1.25;
+      letter-spacing:.02em;
+      color:#e9edff;
+      text-shadow:0 0 24px rgba(171,185,223,.6);
+      margin:0 0 16px;
+      text-align:center;
+    }
+
+    .hero-subtitle{
+      display:block;
+      color:#a3a8c7;
+      font-size:clamp(.9rem,.2vw + .8rem,1rem);
+      line-height:1.5;
+      max-width:700px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    /* ============================== */
+    /*        CLIENT TESTIMONIALS     */
+    /* ============================== */
+
+    .reviews-area{
+      width:100%;
+      max-width:900px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:32px;
+      color:#d7dcf8;
+    }
+
+    .reviews-head{
+      text-align:center;
+      max-width:600px;
+      margin-bottom:16px;
+    }
+
+    .reviews-title{
+      font-family:"Montserrat","Cairo",system-ui,sans-serif;
+      font-weight:700;
+      font-size:clamp(1.2rem,.4vw + 1rem,1.4rem);
+      line-height:1.3;
+      letter-spacing:.02em;
+      color:#e9edff;
+      text-shadow:0 0 20px rgba(171,185,223,.55);
+      margin:0 0 8px;
+    }
+
+    .reviews-desc{
+      color:#a3a8c7;
+      font-size:.8rem;
+      line-height:1.4;
+      margin:0;
+    }
+
+    /* السلايدر */
+    .reviews-slider{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .slider-window{
+      width:100%;
+      max-width:640px;
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+    }
+
+    .slider-track{
+      display:flex;
+      align-items:stretch;
+      width:100%;
+      will-change:transform;
+      transition:transform .6s cubic-bezier(.22,1,.36,1);
+
+      /* <=== ده اهم تعديل عشان السلايدر يشتغل في اللغات RTL
+           و يعرض كل السلايدز مش واحد بس */
+      direction:ltr;
+    }
+
+    /* كل سليد بياخد عرض الـwindow بالكامل */
+    .tslide{
+      flex:0 0 100%;
+      display:flex;
+      justify-content:center;
+      align-items:stretch;
+      padding:0 12px;
+      box-sizing:border-box;
+    }
+
+    /* كارت الريفيو */
+    .tcard{
+      flex:1 1 auto;
+      width:100%;
+      max-width:600px;
+
+      background:
+        radial-gradient(500px 300px at 10% 0%, rgba(171,185,223,.08), transparent 55%),
+        rgba(10,12,18,.78);
+      border:1px solid rgba(171,185,223,.28);
+      border-radius:16px;
+      box-shadow:
+        0 28px 60px rgba(0,0,0,.85),
+        0 10px 30px rgba(171,185,223,.20);
+
+      padding:16px 18px 14px;
+      color:#cfd6ff;
+      line-height:1.45;
+      font-size:.8rem;
+      font-weight:500;
+      text-align:center;
+    }
+
+    .tcard-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:10px;
+      line-height:1.3;
+      text-align:left;
+    }
+
+    .tuser{
+      color:#fff;
+      font-weight:700;
+      font-size:.9rem;
+      white-space:nowrap;
+    }
+
+    .tstars{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      color:#ffd95e;
+      text-shadow:0 0 8px rgba(255,217,94,.45);
+      font-size:.8rem;
+      white-space:nowrap;
+    }
+    .tstars .fa-star{
+      color:#ffd95e;
+      font-size:.8rem;
+    }
+    .tstars .tscore{
+      color:#fff;
+      font-weight:700;
+      font-size:.75rem;
+      margin-left:2px;
+      text-shadow:none;
+    }
+
+    .tbody{
+      color:#dfe3ff;
+      font-size:.86rem;
+      line-height:1.45;
+      margin:0 0 10px;
+      word-break:break-word;
+    }
+
+    .tdate{
+      color:#9fa6c9;
+      font-size:.75rem;
+      text-align:right;
+      line-height:1.4;
+      font-weight:500;
+      margin-top:4px;
+    }
+
+    /* النقاط تحت السلايدر */
+    .slider-dots{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-top:16px;
+    }
+    .slider-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(171,185,223,.3);
+      border:0;
+      padding:0;
+      box-shadow:0 0 12px rgba(171,185,223,.4);
+      cursor:pointer;
+      transition:all .18s cubic-bezier(.22,1,.36,1);
+    }
+    .slider-dot.active{
+      background:#fff;
+      box-shadow:
+        0 0 12px rgba(255,255,255,.8),
+        0 0 24px rgba(171,185,223,.6);
+      transform:scale(1.2);
+    }
+
+    /* البوكس اللي تحت (Average rating) */
+    .reviews-summary-box{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-outline);
+      border-radius:16px;
+      box-shadow:
+        0 30px 60px rgba(0,0,0,.8),
+        0 8px 30px rgba(171,185,223,.18);
+      padding:16px 20px;
+      min-width:min(480px,90%);
+      max-width:480px;
+      text-align:center;
+      color:#dfe6ff;
+      margin-top:32px;
+    }
+
+    .reviews-summary-stars{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:4px;
+      margin-bottom:8px;
+      font-size:.8rem;
+      line-height:1;
+    }
+
+    /* نجوم البوكس */
+    .reviews-summary-stars .fa-solid.fa-star {
+      color:#ffd95e;
+      text-shadow:0 0 8px rgba(255,217,94,.5);
+      font-size:.8rem;
+    }
+    .reviews-summary-stars .fa-regular.fa-star {
+      color:#4a4a4a;
+      text-shadow:none;
+      font-size:.8rem;
+    }
+
+    .reviews-summary-score{
+      font-weight:700;
+      font-size:.9rem;
+      color:#fff;
+      text-shadow:0 0 12px rgba(171,185,223,.4);
+    }
+    .reviews-summary-score .avg-num{
+      color:#9fb5ff;
+    }
+
+    .reviews-summary-meta{
+      font-size:.7rem;
+      color:#a3a8c7;
+      font-weight:500;
+      margin-top:4px;
+    }
+
+    /* موبايل */
+    @media (max-width:480px){
+      .tcard{
+        font-size:.8rem;
+      }
+      .tbody{
+        font-size:.8rem;
+      }
+      .slider-window{
+        max-width:90%;
+      }
+      .reviews-summary-box{
+        min-width:0;
+        width:90%;
+        max-width:90%;
+      }
+    }
+
+    /* احترام prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+      .slider-track{
+        transition:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- خلفية نجوم -->
+  <div id="starfield-container"><canvas id="stars"></canvas></div>
+
+  <!-- Floating Header / dock-header -->
+  <div class="dock-header" role="navigation" aria-label="Main Navigation">
+    <div class="dock-shell">
+      <ul class="dock-list">
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Home" href="index.html"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Portfolio" href="portfolio.html"><i class="fas fa-images"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Terms" href="terms.html"><i class="fas fa-file-contract"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Price" href="price.html"><i class="fas fa-tag"></i></a>
+        </li>
+        <li class="dock-item">
+          <a class="dock-btn" data-label="Games" href="games.html"><i class="fas fa-gamepad"></i></a>
+        </li>
+      </ul>
+
+      <div class="lang-switcher" role="group" aria-label="Language Switcher">
+        <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+        <button class="lang-btn" data-lang="ar" type="button" aria-pressed="false">AR</button>
+        <button class="lang-btn" data-lang="es" type="button" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="home-page">
+
+    <!-- Hero -->
+    <section class="hero-block">
+      <h1 class="hero-title"
+          data-en="Welcome to My World"
+          data-ar="مرحبًا بك في عالمي"
+          data-es="Bienvenido a Mi Mundo">
+        Welcome to My World
+      </h1>
+      <p class="hero-subtitle"
+         data-en="I'm a professional Roblox UI/UX designer, creating stunning interfaces for your games."
+         data-ar="أنا مصمم واجهات Roblox محترف، أقدّم لك واجهات مذهلة ومصممة بعناية لألعابك."
+         data-es="Soy un diseñador profesional de UI/UX para Roblox, creando interfaces increíbles para tus juegos.">
+        I'm a professional Roblox UI/UX designer, creating stunning interfaces for your games.
+      </p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="reviews-area" aria-label="Client Reviews">
+
+      <header class="reviews-head">
+        <h2 class="reviews-title"
+            data-en="Client Testimonials"
+            data-ar="آراء العملاء"
+            data-es="Testimonios de Clientes">
+          Client Testimonials
+        </h2>
+        <p class="reviews-desc"
+           data-en="What clients say about my work"
+           data-ar="العملاء بيقولوا ايه عن شغلي"
+           data-es="Lo que dicen mis clientes sobre mi trabajo">
+          What clients say about my work
+        </p>
+      </header>
+
+      <!-- السلايدر -->
+      <section class="reviews-slider" aria-label="Testimonials carousel">
+        <div class="slider-window">
+          <div class="slider-track" id="reviewsTrack">
+            <!-- slides injected by JS -->
+          </div>
+        </div>
+        <div class="slider-dots" id="reviewsDots" role="tablist" aria-label="Testimonials pagination">
+          <!-- dots injected by JS -->
+        </div>
+      </section>
+
+      <!-- Summary Box -->
+      <div class="reviews-summary-box" aria-label="Rating summary">
+        <div class="reviews-summary-stars" id="summaryStars">
+          <!-- dynamic stars by JS -->
+        </div>
+
+        <div class="reviews-summary-score">
+          <span class="avg-num" id="avgRating">--</span>
+          <span> /5 Average rating</span>
+        </div>
+
+        <div class="reviews-summary-meta">
+          Based on <span id="reviewCount">--</span>+ reviews
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Floating Footer / dock-footer -->
+  <footer class="dock-footer">
+    <div class="dock-footer-shell">
+      <div class="dock-footer-item time-block">
+        <span class="time-label"
+              data-en="Cairo Time:"
+              data-ar="وقت القاهرة:"
+              data-es="Hora de El Cairo:">
+          Cairo Time:
+        </span>
+        <span class="time-value" id="current-time">--:--:--</span>
+      </div>
+
+      <a class="social-btn discord-btn"
+         href="https://discord.com/users/1077620522680057856"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Discord">
+        <i class="fab fa-discord" aria-hidden="true"></i>
+      </a>
+
+      <div class="dock-footer-item comm-block" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"><div class="dot"></div></div>
+        <span>
+          <strong data-en="Commissions:" data-ar="الطلبات:" data-es="Comisiones:">Commissions:</strong>
+          <span data-en="Opened" data-ar="مفتوحة" data-es="Abiertas">Opened</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
